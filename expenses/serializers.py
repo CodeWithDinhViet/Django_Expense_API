@@ -53,7 +53,7 @@ class TransactionSerializer(serializers.ModelSerializer):
         
         if category and transaction_type and category.type != transaction_type:
             raise serializers.ValidationError({
-                'category': 'Category type must match transaction type.'
+                'category': 'Category type must match transaction type'
             })
         return data
     
