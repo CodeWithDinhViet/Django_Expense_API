@@ -54,8 +54,8 @@ class TransactionViewSet(viewsets.ModelViewSet):
             
         transaction_type = self.request.query_params.get('type')
         category = self.request.query_params.get('category')
-        date = self.request.query_params('date')
-        month = self.request.query_params('month')
+        date = self.request.query_params.get('date')
+        month = self.request.query_params.get('month')
         
         if transaction_type:
             queryset = queryset.filter(type=transaction_type)
@@ -79,9 +79,9 @@ class TransactionViewSet(viewsets.ModelViewSet):
     def summary(self, request):
         queryset = self.get_queryset()
         
-        total_income = queryset.filter(type='income').aggreate(total=Sum('amount'))['total'] or 0
+        total_income = queryset.filter(type='income').aggregate(total=Sum('amount'))['total'] or 0
         
-        total_expense = queryset.filter(type='expense').aggreate(total=Sum('amount'))['total'] or 0
+        total_expense = queryset.filter(type='expense').aggregate(total=Sum('amount'))['total'] or 0
         
         balance = total_income - total_expense
         

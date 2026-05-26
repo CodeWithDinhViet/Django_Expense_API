@@ -5,7 +5,8 @@ from .views import RegisterView, CategoryViewSet, TransactionViewSet
 
 router = DefaultRouter()
 router.register('categories', CategoryViewSet, basename='category')
-router.register('categories', TransactionViewSet, basename='transaction')
+
+router.register('transactions', TransactionViewSet, basename='transaction')
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),

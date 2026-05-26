@@ -24,7 +24,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'user', 'name', 'type', 'created_at',]
-        read_only_fields = ['id', 'user', 'creted_at']
+        read_only_fields = ['id', 'user', 'created_at']
         
         
 class TransactionSerializer(serializers.ModelSerializer):
@@ -33,18 +33,19 @@ class TransactionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Transaction
-        category_name = ['id',
-                        'user',
-                        'category',
-                        'caegory_name',
-                        'title',
-                        'amount',
-                        'type',
-                        'date'
-                        'note',
-                        'created_at',
-                        'updated_at',
-                        ]
+        fields = [
+            'id',
+            'user',
+            'category',
+            'category_name',
+            'title',
+            'amount',
+            'type',
+            'date',
+            'note',
+            'created_at',
+            'updated_at',
+            ]
         read_only_fields = ['id', 'user', 'created_at', 'updated_at']
     
     def validate(self, data):

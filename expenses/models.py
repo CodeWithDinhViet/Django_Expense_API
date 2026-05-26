@@ -19,7 +19,7 @@ class Category(models.Model):
         max_length=10,
         choices=TYPE_CHOICES
     )
-    created_at = models.DateTimeField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     
     
     class Meta:
